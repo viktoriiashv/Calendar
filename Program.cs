@@ -6,16 +6,12 @@ namespace Calendar
     {
         static void Main(string[] args)
         {
-           /*// ShowCalendar(new DateTime(2020,8,1));
-            string month = "August";
-            int year = 2020;
-            Calendar(month, year);*/
             Calendar("July", 2019);
             Calendar("May");
             Calendar();
         }
 
-         public static void Calendar (string month, int year = 2020)
+         public static void Calendar (string month, int year)
         {
             string dateinString = "1" + month + year;
             DateTime date = Convert.ToDateTime(dateinString);
@@ -24,9 +20,7 @@ namespace Calendar
         }
         public static void Calendar ()
         {
-            
             string dateinString = "1" + "." + DateTime.Now.Month +"."+ DateTime.Now.Year;
-            
             DateTime date = Convert.ToDateTime(dateinString);
             ShowCalendar(date);
         }
@@ -45,7 +39,6 @@ namespace Calendar
             for( int i = 0; i < emptySpaces; i++){
                 Console.Write("\t");
             }
-            int counter = emptySpaces;
             for (var date = startDay; date != endDay; date = date.AddDays(1))
             {   
                 if(date.DayOfWeek == DayOfWeek.Sunday || date.DayOfWeek == DayOfWeek.Saturday || date.Date == DateTime.Today)
@@ -57,13 +50,11 @@ namespace Calendar
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.Write(date.Day + "\t");
-                if(counter == 6){
+                if(date.DayOfWeek == DayOfWeek.Saturday){
                     Console.WriteLine();
-                    counter = 0;
+                    
                 }
-                else{
-                    counter++;
-                }
+              
             }
             Console.WriteLine();
             Console.WriteLine();
