@@ -6,31 +6,17 @@ namespace Calendar
     {
         static void Main(string[] args)
         {
-            while (true)
+            switch (args.Length)
             {
-                string command = Console.ReadLine();
-                string[] lineValues = command.Split(' ');
-                if (lineValues[0] == "calendar")
-                {
-                    switch (lineValues.Length)
-                    {
-                        case 1:
-                            Calendar();
-                            break;
-                        case 2:
-                            Calendar(lineValues[1]);
-                            break;
-                        case 3:
-                            Calendar(lineValues[1], Convert.ToInt32(lineValues[2]));
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Sorry, wrong command");
-                }
+                case 0:
+                    Calendar();
+                    break;
+                case 1:
+                    Calendar(args[0]);
+                    break;
+                case 2:
+                    Calendar(args[0], Convert.ToInt32(args[1]));
+                    break;
             }
 
         }
@@ -48,8 +34,6 @@ namespace Calendar
             {
                 Console.WriteLine("Invalid data");
             }
-
-            
 
         }
         public static void Calendar()
